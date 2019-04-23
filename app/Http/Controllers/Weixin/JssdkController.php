@@ -22,7 +22,7 @@ class JssdkController extends Controller
         $string1 = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
         $sign = sha1($string1);
         $js_config = [
-            'appId' => env('WX_APP_ID'),        //公众号APPID
+            'appId' => env('WX_APPID'),        //公众号APPID
             'timestamp' => $timestamp,
             'nonceStr' => $nonceStr,   //随机字符串
             'signature' => $sign,                      //签名
