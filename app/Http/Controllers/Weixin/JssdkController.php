@@ -9,7 +9,7 @@ class JssdkController extends Controller
     {
         // echo __METHOD__;
 //        test();die;
-        echo '<pre>';print_r($_SERVER);echo '</pre>';die;
+//        echo '<pre>';print_r($_SERVER);echo '</pre>';die;
         //计算签名
         $nonceStr = Str::random(10);
         $ticket = getJsapiTicket();
