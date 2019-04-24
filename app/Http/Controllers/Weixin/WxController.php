@@ -15,7 +15,6 @@ class WxController extends Controller
     public function index(){
         echo $_GET['echostr'];
     }
-
     //就收微信推送信息并处理
     public function event(){
         $content = file_get_contents("php://input");
@@ -67,7 +66,6 @@ class WxController extends Controller
             }
         }
     }
-
     //获取token
     public function token(){
         $key = 'accosse_token';
@@ -91,8 +89,6 @@ class WxController extends Controller
         }
         return $token;
     }
-
-
     public function getuser($openid){
         $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->token().'&openid='.$openid.'&lang=zh_CN';
 //        echo $url;die;
@@ -101,7 +97,6 @@ class WxController extends Controller
         $arr = json_decode($data,true);
         return $arr;
     }
-
     public function menu2(){
 //        接口
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->token();
@@ -159,30 +154,33 @@ class WxController extends Controller
         }
 
     }
-
-
     public function getU()
     {
         echo '<pre>';print_r($_GET);echo '</pre>';
         $code = $_GET['code'];
-//        echo $code;die;
-        //获取 access_token
         $url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.env('WX_APPID').'&secret='.env('WX_SECRET').'&code='.$code.'&grant_type=authorization_code';
         $response = json_decode(file_get_contents($url),true);
-
         echo '<pre>';print_r($response);echo '</pre>';
         $access_token = $response['access_token'];
-
         $openid = $response['openid'];
         //获取用户信息
         $url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
         $user_info = json_decode(file_get_contents($url),true);
+        echo '<pre>';print_r($user_info);echo '</pre>';
 
         $openid = $user_info['openid'];
         $nickname = $user_info['nickname'];
         $date = DB::table('wx_interface')->where('openid',$openid)->count();
-        print_r($date);die;
-        echo '<pre>';print_r($user_info);echo '</pre>';
+            if($date){
+                $content = "$nickname,欢迎回来";
+            }else{
+                $data=[
+                    'openid'=>$openid,
+                    'nickname'=>$nickname
+                ];
+                $array = DB::table('wx_interface')->insert($data);
+                $content = "$nickname,欢迎";
+            }
     }
 
 }
