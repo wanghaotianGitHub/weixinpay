@@ -51,3 +51,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //微信JSSDK
 Route::get('/wx/js/test', 'Weixin\JssdkController@jsTest');      //jssdk测试
 Route::get('/wx/js/getImg', 'Weixin\JssdkController@getImg');      //获取JSSDK上传的照片
+
+
+

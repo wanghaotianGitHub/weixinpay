@@ -31,8 +31,8 @@ class WxPayController extends Controller
             'out_trade_no'      => $order['order_number'],                       //本地订单号
             'total_fee'         => $total_fee,
             'spbill_create_ip'  => $_SERVER['REMOTE_ADDR'],     //客户端IP
-            'notify_url'        => $this->notify_url,        //通知回调地址
-            'trade_type'        => 'NATIVE'                         // 交易类型
+            'notify_url'        => $this->notify_url,           //通知回调地址
+            'trade_type'        => 'NATIVE'                     // 交易类型
         ];
 //
         $this->values = [];
