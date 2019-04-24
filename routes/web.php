@@ -61,4 +61,4 @@ Route::get('/wx/js/getImg', 'Weixin\JssdkController@getImg');      //获取JSSDK
 Route::get('/crontab/del_orders', 'Crontab\CrontabController@delOrders');  //删除过期订单
 
 
-Route::get('/wxweb/u', 'Weixin\WXController@getU');         //微信网页授权回调
+Route::get('/wxweb/u', 'Weixin\WxController@getU');         //微信网页授权回调
