@@ -14,9 +14,9 @@
 <button id="btn1">选择照片</button>
 
 <img src="" alt="" id="imgs0" width="300">
-<hr>
+<hr><hr>
 <img src="" alt="" id="imgs1"  width="300">
-<hr>
+<hr><hr>
 <img src="" alt="" id="imgs2"  width="300">
 
 <script src="/js/jquery/jquery-1.12.4.min.js"></script>
