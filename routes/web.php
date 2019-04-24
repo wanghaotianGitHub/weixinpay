@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test/urlencode', function () {
+    echo urlencode($_GET['url']);
+});
+
 /*微信*/
 //Route::get('index', 'Weixin\WxController@index');
 //Route::any('index', 'Weixin\WxController@event');
@@ -53,4 +57,8 @@ Route::get('/wx/js/test', 'Weixin\JssdkController@jsTest');      //jssdk测试
 Route::get('/wx/js/getImg', 'Weixin\JssdkController@getImg');      //获取JSSDK上传的照片
 
 
+//计划任务
+Route::get('/crontab/del_orders', 'Crontab\CrontabController@delOrders');  //删除过期订单
 
+
+Route::get('/wxweb/u', 'Weixin\WXController@getU');         //微信网页授权回调
