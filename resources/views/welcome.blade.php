@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    微信支付
+                    shop
                 </div>
 
                 <div class="links">
