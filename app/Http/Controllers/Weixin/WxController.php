@@ -173,6 +173,7 @@ class WxController extends Controller
         $date = DB::table('wx_interface')->where('openid',$openid)->count();
             if($date){
                 $content = "$nickname,欢迎回来";
+                echo $content;
             }else{
                 $data=[
                     'openid'=>$openid,
@@ -180,6 +181,7 @@ class WxController extends Controller
                 ];
                 $array = DB::table('wx_interface')->insert($data);
                 $content = "$nickname,欢迎";
+                echo $content;
             }
     }
 
