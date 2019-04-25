@@ -15,16 +15,16 @@ class JssdkController extends Controller
         $ticket = getJsapiTicket();
         $timestamp = time();
         $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
-        echo 'nonceStr: '.$nonceStr;echo '</br>';
-        echo 'ticket: '.$ticket;echo '</br>';
-        echo '$timestamp: '.$timestamp;echo '</br>';
-        echo '$current_url: '.$current_url;echo '</br>';die;
-        $string1 = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
-//        echo $string1;die;
-        $sign = sha1($string1);
+//        echo 'nonceStr: '.$nonceStr;echo '</br>';
+//        echo 'ticket: '.$ticket;echo '</br>';
+//        echo '$timestamp: '.$timestamp;echo '</br>';
+//        echo '$current_url: '.$current_url;echo '</br>';die;
+        $strings = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
+        // echo $string1;die;
+        $sign = sha1($strings);
         $js_config = [
             'appId' => env('WX_APPID'),       //公众号APPID
-            'timestamp' => $timestamp,
+            'timestamp' => $timestamp,              //时间戳
             'nonceStr' => $nonceStr,                //随机字符串
             'signature' => $sign,                   //签名
         ];

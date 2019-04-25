@@ -8,11 +8,7 @@
     <title>JSSDK</title>
 </head>
 <body>
-
-
-
-<button id="btn1">选择照片</button>
-
+<button id="btn1">点击照片</button>
 <img src="" alt="" id="imgs0" width="300">
 <hr><hr>
 <img src="" alt="" id="imgs1"  width="300">
